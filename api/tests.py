@@ -11,7 +11,11 @@ class UserModelTestCase(TestCase):
     def setUp(self):
         """ define reusable test variables """
         self.expected_username = "stam"
-        self.user = User(username=self.expected_username)
+        self.expected_phone_number = "9785008493"
+        self.user = User(
+            username=self.expected_username,
+            phone_number=self.expected_phone_number
+        )
         return
 
     def test_that_user_has_username(self):
@@ -26,4 +30,9 @@ class UserModelTestCase(TestCase):
         count_after_save = User.objects.count()
 
         self.assertEqual(count_after_save - count_before_save, 1)
+        return
+
+    def test_that_user_has_phone_number(self):
+        """ test that a user has a phone number """
+        self.assertEqual(self.user.phone_number, self.expected_phone_number)
         return
