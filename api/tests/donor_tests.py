@@ -4,9 +4,9 @@ Tests for api app
 
 from django.test import TestCase
 from django.utils import timezone
-from .models import Donor
+from ..models import Donor
 
-class UserModelTestCase(TestCase):
+class DonorModelTestCase(TestCase):
     """ Test suite for User model """
 
     def setUp(self):
@@ -32,9 +32,9 @@ class UserModelTestCase(TestCase):
 
     def test_that_can_create_user(self):
         """ tests that a user can be created and saved """
-        count_before_save = User.objects.count()
+        count_before_save = Donor.objects.count()
         self.donor.save()
-        count_after_save = User.objects.count()
+        count_after_save = Donor.objects.count()
 
         self.assertEqual(count_after_save - count_before_save, 1)
         return
