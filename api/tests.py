@@ -14,10 +14,14 @@ class UserModelTestCase(TestCase):
         self.expected_username = "stam"
         self.expected_phone_number = "9785008493"
         self.expected_email = "stam@denaeri.com"
+        self.expected_first_name = "stephen"
+        self.expected_last_name = "tam"
         self.user = User(
             username=self.expected_username,
             phone_number=self.expected_phone_number,
-            email=self.expected_email
+            email=self.expected_email,
+            first_name=self.expected_first_name,
+            last_name=self.expected_last_name
         )
         return
 
@@ -51,4 +55,14 @@ class UserModelTestCase(TestCase):
         self.user.save()
 
         self.assertGreater(self.user.date_joined, now)
+        return
+
+    def test_that_user_has_first_name(self):
+        """ test that a user has a first name """
+        self.assertEqual(self.user.first_name, self.expected_first_name)
+        return
+
+    def test_that_user_has_last_name(self):
+        """ test that a user has a last name """
+        self.assertEqual(self.user.last_name, self.expected_last_name)
         return
