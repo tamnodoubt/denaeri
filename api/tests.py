@@ -3,6 +3,7 @@ Tests for api app
 """
 
 from django.test import TestCase
+from django.utils import timezone
 from .models import User
 
 class UserModelTestCase(TestCase):
@@ -12,9 +13,11 @@ class UserModelTestCase(TestCase):
         """ define reusable test variables """
         self.expected_username = "stam"
         self.expected_phone_number = "9785008493"
+        self.expected_email = "stam@denaeri.com"
         self.user = User(
             username=self.expected_username,
-            phone_number=self.expected_phone_number
+            phone_number=self.expected_phone_number,
+            email=self.expected_email
         )
         return
 
@@ -35,4 +38,17 @@ class UserModelTestCase(TestCase):
     def test_that_user_has_phone_number(self):
         """ test that a user has a phone number """
         self.assertEqual(self.user.phone_number, self.expected_phone_number)
+        return
+
+    def test_that_user_has_email(self):
+        """ test that a user has an email """
+        self.assertEqual(self.user.email, self.expected_email)
+        return
+
+    def test_that_user_has_date_joined(self):
+        """ test that a user has a join date """
+        now = timezone.now()
+        self.user.save()
+
+        self.assertGreater(self.user.date_joined, now)
         return
