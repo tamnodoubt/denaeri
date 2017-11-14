@@ -11,6 +11,3 @@ class CreateListOrganizationView(ListCreateAPIView): # pylint: disable=R0901
     queryset = Organization.objects.all()
     serializer_class = OrganizationSerializer
 
-    def perform_create(self, serializer): # stam: not sure this is needed
-        """Save the post data when creating a new organization."""
-        serializer.save()
