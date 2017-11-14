@@ -35,4 +35,4 @@ class Organization(models.Model):
     )
 
     def __str__(self):
-        return str(self.id) + ": " + self.name
+        return str(self.id) + ": " + self.display_name
