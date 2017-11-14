@@ -1,5 +1,5 @@
 """
-Tests for api app
+Tests for donor model
 """
 
 from django.test import TestCase
@@ -23,6 +23,12 @@ class DonorModelTestCase(TestCase):
             first_name=self.expected_first_name,
             last_name=self.expected_last_name
         )
+        return
+
+    def test_that_str_is_defined(self):
+        """ tests that __str__ is defined for Donor """
+        self.donor.save() # will create an id for donor
+        self.assertEqual(str(self.donor), str(self.donor.id) + ": " + self.expected_username)
         return
 
     def test_that_user_has_username(self):
