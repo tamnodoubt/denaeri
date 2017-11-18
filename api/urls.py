@@ -21,7 +21,7 @@ urlpatterns = {
         name="retrieve_update_delete_donor"
     ),
     url(
-        r'organization/$',
+        r'organizations/$',
         CreateListOrganizationView.as_view(),
         name="create_list_organization"
     )
